@@ -1,0 +1,11 @@
+.tech-item {
+  text-align: center;
+  transition: transform 0.3s;
+}
+.tech-item:hover {
+  transform: scale(1.1);
+}
+.tech-image {
+  width: 50px;
+  height: 50px;
+}
