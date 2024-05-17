@@ -67,10 +67,9 @@ const App = () => {
             I'm Software Engineering undergraduate, following a Bachelor of Science Honors in Information Technology in Software Engineering at SLTC. Also a young researcher with a major interest in ,embedded systems, java related technologies, machine learning, cloud computing, Cybersecurity, IoT, and computer vision.
             I prefer self-learning over any other learning method and am always eager to learn something new. I am a motivated team player and have skills in: Python, C, Java and Java related Frameworks. I'm eager to put my skills and talents to work in any area where they are needed.
           </span>
-
       </div>
       
-      
+
       <Button onClick={toggleTheme}>Toggle Theme</Button>
       {/* Your app content goes here */}
     </div>
