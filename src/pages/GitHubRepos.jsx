@@ -10,6 +10,7 @@ const GitHubRepos = ({ username, theme }) => {
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // DO FRONTEND CHACHING HERE
   useEffect(() => {
     const fetchRepos = async () => {
       setLoading(true);
@@ -26,8 +27,8 @@ const GitHubRepos = ({ username, theme }) => {
           allRepos = [...allRepos, ...fetchedRepos];
           page++;
         } while (fetchedRepos.length > 0);
-
         setRepos(allRepos);
+        localStorage.setItem('projects', JSON.stringify(allRepos));
       } catch (error) {
         console.error("Error fetching repos:", error);
       } finally {
@@ -35,7 +36,13 @@ const GitHubRepos = ({ username, theme }) => {
       }
     };
 
-    fetchRepos();
+    // check local storage status
+    if (localStorage.getItem('projects') !== null) {
+      setRepos(JSON.parse(localStorage.getItem('projects')));
+      setLoading(false);
+    } else {
+      fetchRepos();
+    }
   }, [username, theme]);
 
   const wordConversation = (word) => {
@@ -58,7 +65,7 @@ const GitHubRepos = ({ username, theme }) => {
         ) : (
           repos.map((repo) => (
             <Col key={repo.id} xs={24} sm={12} md={8} lg={6}>
-              <Card style={{ width: 300, margin: '20px auto', height: '200px', backgroundColor: theme ? '#333' : '#fff' }}hoverable>
+              <Card style={{ width: 320, margin: '20px auto', height: '200px', backgroundColor: theme ? '#333' : '#fff' }}hoverable>
 
   <Meta
     avatar={<Avatar src={repo.owner.avatar_url} />}
