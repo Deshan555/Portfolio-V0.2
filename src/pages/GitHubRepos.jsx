@@ -3,14 +3,24 @@ import { Card, Avatar, Skeleton, Row, Col } from 'antd';
 import { StarOutlined, ForkOutlined, CodeOutlined } from '@ant-design/icons';
 import axios from 'axios';
 import '../theme.css';
+import data from './projects.json';
 
 const { Meta } = Card;
 
 const GitHubRepos = ({ username, theme }) => {
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [activeProjects, setActiveProjects] = useState([]);
 
-  // DO FRONTEND CHACHING HERE
+  const activeProjectsFetch = async () => {
+    let projectsArray = [];
+    data.forEach((project) => {
+      projectsArray.push(project.name);
+    });
+    setActiveProjects(projectsArray);
+    return true;
+  };
+
   useEffect(() => {
     const fetchRepos = async () => {
       setLoading(true);
@@ -27,7 +37,7 @@ const GitHubRepos = ({ username, theme }) => {
           allRepos = [...allRepos, ...fetchedRepos];
           page++;
         } while (fetchedRepos.length > 0);
-        setRepos(allRepos);
+        setRepos(filterProjects(allRepos));
         localStorage.setItem('projects', JSON.stringify(allRepos));
       } catch (error) {
         console.error("Error fetching repos:", error);
@@ -35,15 +45,52 @@ const GitHubRepos = ({ username, theme }) => {
         setLoading(false);
       }
     };
-
-    // check local storage status
     if (localStorage.getItem('projects') !== null) {
-      setRepos(JSON.parse(localStorage.getItem('projects')));
+      setRepos(filterProjects(JSON.parse(localStorage.getItem('projects'))));
       setLoading(false);
     } else {
       fetchRepos();
     }
   }, [username, theme]);
+
+  const filterProjects = async (allProjects) => {
+    const response = await activeProjectsFetch();
+    console.log(response);
+    if (!response) {
+      return [];
+    } else {
+      const filteredProjects = allProjects.map(project => {
+        if (activeProjects.includes(project.name)) {
+          return {
+            name: project.name,
+            fullname: project.fullName,
+            id: project.id,
+            url: project.url,
+            avatar_url: project.owner ? project.owner.avatar_url : null,
+            stargazers_count: project.stargazers_count,
+            forks_count: project.forks_count,
+            language: project.language,
+            description: project.description,
+          };
+        }
+        return null;
+      }).filter(project => project !== null);
+      return filteredProjects;
+    }
+  };
+
+//  const isProjectActive = (fullName) => {
+//   console.log(fullName);
+//    data.map((project) => {
+//     console.log(project.name);                                                                                  
+//       if (project.name === fullName) {
+//         return true;
+//       }
+//     return false;
+//     });
+//  }
+
+
 
   const wordConversation = (word) => {
     return word.replace(/([A-Z])/g, ' $1').replace(/^./, function (str) {
@@ -53,6 +100,9 @@ const GitHubRepos = ({ username, theme }) => {
 
   return (
     <div style={{ padding: '20px' }}>
+      <pre>
+        {JSON.stringify(activeProjects, null, 2)}
+      </pre>
       <Row gutter={[16, 16]}>
         {loading ? (
           Array.from({ length: 12 }).map((_, index) => (
@@ -63,49 +113,33 @@ const GitHubRepos = ({ username, theme }) => {
             </Col>
           ))
         ) : (
-          repos.map((repo) => (
+          repos?.map((repo) => (
             <Col key={repo.id} xs={24} sm={12} md={8} lg={6}>
-              <Card style={{ width: 320, margin: '20px auto', height: '200px', backgroundColor: theme ? '#333' : '#fff' }}hoverable>
-
-  <Meta
-    avatar={<Avatar src={repo.owner.avatar_url} />}
-    title={<span className='font-light' style={{color: theme ? '#fff' : '#000', fontSize: '14px'}}>{wordConversation(repo.name)}</span>}
-    className={theme ? 'dark-mode-text' : 'light-mode-text'}
-    style={{ height: '130px' }}
-    description={<span className={'font-light'}
-    style={{color: theme ? '#fff' : '#000', fontSize: '12px'}}
-    >{repo.description}<a href={repo.html_url} target="_blank" rel="noreferrer">GitHub</a></span>}
-  />
-
-
+              <Card style={{ width: 320, margin: '20px auto', height: '200px', backgroundColor: theme ? '#333' : '#fff' }} hoverable>
+                <Meta
+                  avatar={<Avatar src='https://avatars.githubusercontent.com/u/74134064?v=4' />}
+                  title={<span className='font-light' style={{ color: theme ? '#fff' : '#000', fontSize: '14px' }}>{wordConversation(repo.name)}</span>}
+                  className={theme ? 'dark-mode-text' : 'light-mode-text'}
+                  style={{ height: '130px' }}
+                  description={<span className={'font-light'}
+                    style={{ color: theme ? '#fff' : '#000', fontSize: '12px' }}
+                  >{repo.description}<a href={repo.html_url} target="_blank" rel="noreferrer"> GitHub</a></span>}
+                />
                 <div style={{ marginTop: '10px', height: '30px' }}>
-                  {/* <Row>
-                    <Col span={12}>
-                      <a href={repo.html_url} target="_blank" rel="noreferrer">GitHub</a>
-                    </Col>
-                    <Col span={12}>
-                      <a href={repo.html_url + '/archive/refs/heads/main.zip'}>Download</a>
-                    </Col>
-                  </Row> */}
                   <Row>
                     <Col span={8}>
                       <span className={'font-light'}
-    style={{color: theme ? '#fff' : '#000', fontSize: '12px'}}><StarOutlined /> Stars: {repo.stargazers_count}</span>
+                        style={{ color: theme ? '#fff' : '#000', fontSize: '12px' }}><StarOutlined /> Stars: {repo.stargazers_count}</span>
                     </Col>
                     <Col span={8}>
                       <span className={'font-light'}
-    style={{color: theme ? '#fff' : '#000', fontSize: '12px'}}><ForkOutlined /> Forks: {repo.forks_count}</span>
+                        style={{ color: theme ? '#fff' : '#000', fontSize: '12px' }}><ForkOutlined /> Forks: {repo.forks_count}</span>
                     </Col>
                     <Col span={8}>
                       <span className={'font-light'}
-    style={{color: theme ? '#fff' : '#000', fontSize: '12px'}}><CodeOutlined />{repo.language}</span>
+                        style={{ color: theme ? '#fff' : '#000', fontSize: '12px' }}><CodeOutlined /> {repo.language}</span>
                     </Col>
                   </Row>
-                  {/* <p><b>Created at:</b> {new Date(repo.created_at).toLocaleDateString()}</p>
-                  <p><StarOutlined /> Stars: {repo.stargazers_count}</p>
-                  <p><ForkOutlined /> Forks: {repo.forks_count}</p>
-                  <p><b>Language:</b> {repo.language}</p>
-                  {repo.homepage && <a href={repo.homepage} target="_blank" rel="noreferrer">Live Demo</a>} */}
                 </div>
               </Card>
             </Col>
