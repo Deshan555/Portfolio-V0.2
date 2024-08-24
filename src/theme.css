@@ -17,3 +17,20 @@
     font-size: '10px';
     font-family: 'Poppins', sans-serif;
   }
+
+  .div {
+    text-align: justify;
+    font-family: 'Poppins', sans-serif;
+    text-shadow: #000000;
+    text-justify: inter-word;
+    font-size: medium;
+    margin-top: 20px;
+    line-height: 1.5;
+  }
+/* 
+  html {
+    scroll-behavior: smooth;
+  } */
+  
+  /* Your existing CSS styles */
+  
