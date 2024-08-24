@@ -12,17 +12,45 @@ const GitHubRepos = ({ username, theme }) => {
   const [loading, setLoading] = useState(true);
   const [activeProjects, setActiveProjects] = useState([]);
 
-  const activeProjectsFetch = async () => {
-    let projectsArray = data.map(project => project.name);
-    setActiveProjects(projectsArray);
-    return true;
-  };
+  // Fetch active projects on component mount
+  useEffect(() => {
+    const activeProjectsFetch = async () => {
+      let projectsArray = data.map(project => project.name);
+      setActiveProjects(projectsArray);
+    };
 
-  const filterProjects = async (allProjects) => {
-    const response = await activeProjectsFetch();
-    if (!response) {
-      return [];  // Ensure it returns an array
-    } else {
+    activeProjectsFetch();
+  }, []);
+
+  // Fetch and filter repositories when username or activeProjects changes
+  useEffect(() => {
+    const fetchRepos = async () => {
+      setLoading(true);
+      try {
+        let page = 1;
+        let allRepos = [];
+        let fetchedRepos;
+
+        do {
+          const response = await axios.get(`https://api.github.com/users/${username}/repos`, {
+            params: { page, per_page: 100 },
+          });
+          fetchedRepos = response.data;
+          allRepos = [...allRepos, ...fetchedRepos];
+          page++;
+        } while (fetchedRepos.length > 0);
+
+        const filteredRepos = filterProjects(allRepos);
+        setRepos(filteredRepos);
+        localStorage.setItem('projects', JSON.stringify(allRepos));
+      } catch (error) {
+        console.error("Error fetching repos:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    const filterProjects = (allProjects) => {
       const filteredProjects = allProjects.map(project => {
         if (activeProjects.includes(project.name)) {
           return {
@@ -40,47 +68,21 @@ const GitHubRepos = ({ username, theme }) => {
         return null;
       }).filter(project => project !== null);
 
-      return filteredProjects;  // Ensure it returns an array
-    }
-  };
+      return filteredProjects;  
+    };
 
-  useEffect(() => {
-    const cachedProjects = localStorage.getItem('projects');
-    if (cachedProjects) {
-      filterProjects(JSON.parse(cachedProjects)).then(filteredRepos => {
-        setRepos(filteredRepos);  // Set the filtered repos
+    if (activeProjects.length > 0) {
+      const cachedProjects = localStorage.getItem('projects');
+      if (cachedProjects) {
+        const allRepos = JSON.parse(cachedProjects);
+        const filteredRepos = filterProjects(allRepos);
+        setRepos(filteredRepos);
         setLoading(false);
-      });
-    } else {
-      fetchRepos();
+      } else {
+        fetchRepos();
+      }
     }
-  }, [username, theme]);
-
-  const fetchRepos = async () => {
-    setLoading(true);
-    try {
-      let page = 1;
-      let allRepos = [];
-      let fetchedRepos;
-
-      do {
-        const response = await axios.get(`https://api.github.com/users/${username}/repos`, {
-          params: { page, per_page: 100 },
-        });
-        fetchedRepos = response.data;
-        allRepos = [...allRepos, ...fetchedRepos];
-        page++;
-      } while (fetchedRepos.length > 0);
-
-      const filteredRepos = await filterProjects(allRepos);  // Wait for filtering to complete
-      setRepos(filteredRepos);  // Ensure repos is an array
-      localStorage.setItem('projects', JSON.stringify(allRepos));
-    } catch (error) {
-      console.error("Error fetching repos:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  }, [username, theme, activeProjects]);
 
   const wordConversation = (word) => {
     return word.replace(/([A-Z])/g, ' $1').replace(/^./, function (str) {
