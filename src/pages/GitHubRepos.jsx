@@ -91,11 +91,14 @@ const GitHubRepos = ({ username, theme }) => {
   };
 
   return (
-    <div style={{ padding: '20px' }}>
+    <div style={{ marginRight: '10%', marginLeft: '10%', marginTop: 35 }}>
+      <Row gutter={[16, 16]} justify="end">
+        <span style={{ fontSize: 60, marginTop: '0px', fontWeight: 'bold' }} className='font-header'>Projects</span>
+      </Row>
       <Row gutter={[16, 16]}>
         {loading ? (
           Array.from({ length: 12 }).map((_, index) => (
-            <Col key={index} xs={24} sm={12} md={8} lg={6}>
+            <Col key={index} xs={24} sm={12} md={8} lg={8}>
               <Card style={{ width: 300, margin: '20px auto' }}>
                 <Skeleton loading={loading} avatar active />
               </Card>
@@ -103,8 +106,8 @@ const GitHubRepos = ({ username, theme }) => {
           ))
         ) : (
           repos?.map((repo) => (
-            <Col key={repo.id} xs={24} sm={12} md={8} lg={6}>
-              <Card style={{ width: 320, margin: '20px auto', height: '200px', backgroundColor: theme ? '#333' : '#fff' }} hoverable>
+            <Col key={repo.id} xs={24} sm={12} md={8} lg={8}>
+              <Card style={{ width: 350, margin: '10px auto', height: '200px', backgroundColor: theme ? '#333' : '#fff' }} hoverable>
                 <Meta
                   avatar={<Avatar src={repo.avatar_url} />}
                   title={<span className='font-light' style={{ color: theme ? '#fff' : '#000', fontSize: '14px' }}>{wordConversation(repo.name)}</span>}
