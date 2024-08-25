@@ -39,13 +39,16 @@ const technologies = [
 ];
 
 const TechnologyStack = () => (
-  <div style={{ padding: '20px' }}>
-    <Row gutter={[16, 16]}>
+  <div style={{ marginRight: '10%', marginLeft: '10%', marginTop: 30 }}>
+          <Row gutter={[16, 16]} justify="end">
+        <span style={{ fontSize: 60, marginTop: '0px', fontWeight: 'bold'}} className='font-header'>Technology Stack</span>
+      </Row>
+    <Row gutter={[16, 16]} style={{ marginTop: 20 }}>
       {technologies.map((tech) => (
         <Col key={tech.name} xs={12} sm={8} md={6} lg={4} xl={3}>
           <LazyLoad height={100} offset={100}>
             <div className="tech-item">
-              <img src={tech.src} alt={tech.name} className="tech-image" />
+              <img src={tech.src} alt={tech.name} className="tech-image" width={20} height={20} />
               <div>{tech.name}</div>
             </div>
           </LazyLoad>
