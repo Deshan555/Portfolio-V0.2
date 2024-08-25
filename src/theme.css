@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
 
 .light-mode {
     background-color: #ffffff; /* Light mode background color */
@@ -34,3 +36,18 @@
   
   /* Your existing CSS styles */
   
+  .circular-lines {
+    background-image: radial-gradient(circle, transparent 20%, rgb(255, 255, 255) 20%, rgb(255, 255, 255) 22%, transparent 22%),
+                      radial-gradient(circle, transparent 40%, rgb(255, 255, 255) 40%, rgb(255, 255, 255) 42%, transparent 42%),
+                      radial-gradient(circle, transparent 60%, rgb(255, 255, 255) 60%, rgb(255, 255, 255) 62%, transparent 62%);
+    background-size: 100% 100%;
+    background-position: 0 0, 0 0, 0 0;
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  .font-header {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+  }
