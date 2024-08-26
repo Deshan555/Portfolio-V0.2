@@ -8,8 +8,10 @@
     "@testing-library/user-event": "^13.5.0",
     "antd": "^5.17.2",
     "axios": "^1.6.8",
+    "framer-motion": "^11.3.30",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-intersection-observer": "^9.13.0",
     "react-lazyload": "^3.2.1",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
