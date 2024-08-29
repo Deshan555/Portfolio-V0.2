@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Avatar, Skeleton, Row, Col } from 'antd';
-import { StarOutlined, ForkOutlined, CodeOutlined } from '@ant-design/icons';
+import { Card, Avatar, Skeleton, Row, Col, Segmented, Steps } from 'antd';
+import { StarOutlined, ForkOutlined, CodeOutlined,   } from '@ant-design/icons';
 import axios from 'axios';
 import '../theme.css';
 import data from './projects.json';

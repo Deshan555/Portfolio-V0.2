@@ -1,0 +1,115 @@
+{
+    "name": "Deshan Jayashanka",
+    "age": 25,
+    "address": "Colombo",
+    "email": "maxwon555@gmail.com",
+    "phone": "0712345678",
+    "about": "I'm a Software Engineering undergraduate, following a Bachelor of Science Honors in Information Technology in Software Engineering at SLTC. Also a young researcher with a major interest in embedded systems, Java-related technologies, machine learning, cloud computing, Cybersecurity, IoT, and computer vision. I prefer self-learning over any other learning method and am always eager to learn something new. I am a motivated team player and have skills in Python, C, Java and Java-related Frameworks. I'm eager to put my skills and talents to work in any area where they are needed.",
+    "education": [
+        {
+            "degree": "BSc in Computer Science",
+            "university": "University of Colombo",
+            "year": 2020
+        }
+    ],
+    "experience": [
+        {
+            "position": "Software Engineer",
+            "company": "99X Technology",
+            "year": "2021 Feb - Present",
+            "description": "I'm working as a Software Engineer at 99X Technology. I'm responsible for developing and maintaining software applications, participating in the design and architecture of software applications, and collaborating with other team members to develop software applications."
+        },
+        {
+            "position": "Software Engineering Intern",
+            "company": "WSO2",
+            "year": "2020 May - 2020 Dec",
+            "description": "I worked as a Software Engineering Intern at WSO2. I was responsible for developing and maintaining software applications, participating in the design and architecture of software applications, and collaborating with other team members to develop software applications."
+        }
+    ],
+    "skills": [
+        {
+            "name": "Java",
+            "level": "Advanced",
+            "image": "https://img.icons8.com/color/48/000000/java-coffee-cup-logo.png",
+            "type": "language"
+        },
+        {
+            "name": "Spring Boot",
+            "level": "Advanced",
+            "image": "https://img.icons8.com/color/48/000000/spring-logo.png",
+            "type": "framework"
+        },
+        {
+            "name": "React",
+            "level": "Intermediate",
+            "image": "https://img.icons8.com/color/48/000000/react-native.png",
+            "type": "framework"
+        },
+        {
+            "name": "Python",
+            "level": "Advanced",
+            "image": "https://img.icons8.com/color/48/000000/python.png",
+            "type": "language"
+        },
+        {
+            "name": "Django",
+            "level": "Intermediate",
+            "image": "https://img.icons8.com/color/48/000000/django.png",
+            "type": "framework"
+        },
+        {
+            "name": "C",
+            "level": "Advanced",
+            "image": "https://img.icons8.com/color/48/000000/c-programming.png",
+            "type": "language"
+        },
+        {
+            "name": "C++",
+            "level": "Intermediate",
+            "image": "https://img.icons8.com/color/48/000000/c-plus-plus-logo.png",
+            "type": "language"
+        },
+        {
+            "name": "JavaScript",
+            "level": "Intermediate",
+            "image": "https://img.icons8.com/color/48/000000/javascript.png",
+            "type": "language"
+        },
+        {
+            "name": "Node.js",
+            "level": "Intermediate",
+            "image": "https://img.icons8.com/color/48/000000/nodejs.png",
+            "type": "framework"
+        },
+        {
+            "name": "MongoDB",
+            "level": "Intermediate",
+            "image": "https://img.icons8.com/color/48/000000/mongodb.png",
+            "type": "database"
+        },
+        {
+            "name": "MySQL",
+            "level": "Intermediate",
+            "image": "https://img.icons8.com/color/48/000000/mysql-logo.png",
+            "type": "database"
+        },
+        {
+            "name": "PostgreSQL",
+            "level": "Intermediate",
+            "image": "https://img.icons8.com/color/48/000000/postgreesql.png",
+            "type": "database"
+        },
+        {
+            "name": "Git",
+            "level": "Intermediate",
+            "image": "https://img.icons8.com/color/48/000000/git.png",
+            "type": "tool"
+        },
+        {
+            "name": "Docker",
+            "level": "Intermediate",
+            "image": "https://img.icons8.com/color/48/000000/docker.png",
+            "type": "tool"
+        }
+    ]
+}

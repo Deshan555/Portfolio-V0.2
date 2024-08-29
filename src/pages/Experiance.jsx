@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Row, Steps } from 'antd';
-import data from './profile.json';
+import data from './Profile.json';
 import '../theme.css';
 
 const Experience = ({theme}) => {
