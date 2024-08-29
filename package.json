@@ -1,8 +1,8 @@
 {
+  "homepage": "https://github.com/Deshan555/Portfolio-V0.2",
   "name": "deshan-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/Deshan555/Portfolio-V0.2",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
