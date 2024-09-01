@@ -18,7 +18,7 @@ const Experience = ({theme}) => {
   return (
     <div style={{ marginRight: '10%', marginLeft: '10%', marginTop: 30 }}>
       <Row gutter={[16, 16]} justify="end">
-        <span style={{ fontSize: 60, marginTop: '0px', fontWeight: 'bold' }} className='font-header'>
+        <span style={{ fontSize: 45, marginTop: '0px', fontWeight: 'bold' }} className='font-header'>
           Experience
         </span>
       </Row>
@@ -28,8 +28,8 @@ const Experience = ({theme}) => {
         current={1}
         direction="vertical"
         items={data.experience.map((item, index) => ({
-          title: <span style={{ fontSize: 16, fontWeight: 'bold' }} className={theme ? 'dark-mode-text' : 'light-mode-text'}>{item.company} ({item.year})</span>,
-          description: <span style={{ fontSize: 13 }} className={theme ? 'dark-mode-text' : 'light-mode-text'}><b>{item.position}</b>: {item.description}</span>,
+          title: <span style={{ fontSize: 16, fontWeight: 'bold', color: 'white' }} className={theme ? 'dark-mode-text font-light' : 'light-mode-text font-light'}>{item.company} ({item.year})</span>,
+          description: <span style={{ fontSize: 13, color: 'white' }} className={theme ? 'dark-mode-text font-light' : 'light-mode-text font-light'}><b>{item.position}</b>: {item.description}</span>,
         //   content: item.description,
         }))}
       />
