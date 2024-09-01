@@ -24,7 +24,7 @@ const App = () => {
   };
 
   return (
-    <div className={darkMode ? 'dark-mode' : 'light-mode'} style={{ height: '100%' }}>
+    <div className={darkMode ? 'dark-mode' : 'light-mode'} style={{ height: '100%'}}>
       <div className="header" style={{ display: 'flex', justifyContent: 'space-between', padding: '0 20px', alignItems: 'center' }}>
         <h4 className={darkMode ? 'dark-mode-text' : 'light-mode-text'}><CodeOutlined /> Deshan Jayashanka</h4>
         <Menu mode="horizontal" defaultSelectedKeys={['1']} style={{ background: 'transparent' }}>
@@ -44,12 +44,11 @@ const App = () => {
       {/* TECHNOLOGY STACKS SECTION */}
       <TechnologyStack theme={darkMode} />
       {/* PROJECTS SECTION */}
-      {/* <GitHubRepos username="deshan555" theme={darkMode}/> */}
-
+      <GitHubRepos username="deshan555" theme={darkMode}/>
       {/* CONTACT SECTION */}
       <Contact theme={darkMode} />
 
-      <Button onClick={scrollToTop}>Scroll to Top</Button>
+      {/* <Button onClick={scrollToTop}>Scroll to Top</Button> */}
 
     </div>
   );
