@@ -9,11 +9,44 @@
     font-family: 'Poppins', sans-serif;
   }
   
+
+
   .dark-mode {
     background-color: #000000; /* Dark mode background color */
     color: #ffffff; /* Dark mode text color */
     font-family: 'Poppins', sans-serif;
+    padding: 20px;
+    position: relative;
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px; /* Adjust size for spacing between lines */
   }
+  
+  
+  
+  .dark-mode::before {
+    content: '';
+    display: block;
+    height: 2px; /* Thickness of the line art */
+    background: linear-gradient(to right, #ff4d4f, #40a9ff); /* Gradient color for line art */
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .dark-mode::after {
+    content: '';
+    display: block;
+    height: 2px; /* Thickness of the line art */
+    background: linear-gradient(to right, #ff4d4f, #40a9ff); /* Gradient color for line art */
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  
   
 
   .font-light {
