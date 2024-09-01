@@ -93,7 +93,7 @@ const GitHubRepos = ({ username, theme }) => {
   return (
     <div style={{ marginRight: '10%', marginLeft: '10%', marginTop: 35 }}>
       <Row gutter={[16, 16]} justify="end">
-        <span style={{ fontSize: 60, marginTop: '0px', fontWeight: 'bold' }} className='font-header'>Projects</span>
+        <span style={{ fontSize: 45, marginTop: '0px', fontWeight: 'bold' }} className='font-header'>Projects</span>
       </Row>
       <Row gutter={[16, 16]}>
         {loading ? (
