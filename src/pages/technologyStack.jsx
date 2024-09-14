@@ -5,7 +5,7 @@ import '../styles/base.css';
 
 const TechnologyStack = ({ theme }) => (
   <div style={{ marginRight: '10%', marginLeft: '10%', marginTop: 30 }}>
-    <Row gutter={[16, 16]} justify="end">
+    <Row gutter={[16, 16]}>
       <span style={{ fontSize: 45, marginTop: '0px', fontWeight: 'bold' }} className='font-header'>Skills</span>
     </Row>
     <Row gutter={[16, 16]} style={{ marginTop: 20 }}>
