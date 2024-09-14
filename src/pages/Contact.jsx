@@ -32,7 +32,9 @@ const Contact = ({ darkMode }) => {
 
     return (
         <div style={{ marginRight: '10%', marginLeft: '10%', marginTop: 30 }}>
-            <Row gutter={[16, 16]} justify="end">
+            <Row gutter={[16, 16]} 
+            // justify="end"
+            >
                 <span style={{ fontSize: 45, marginTop: '0px', fontWeight: 'bold' }} className='font-header'>
                     Get in Touch
                 </span>
